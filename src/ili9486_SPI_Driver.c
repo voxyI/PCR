@@ -18,6 +18,9 @@ extern SPI_HandleTypeDef hspi1;
  * Initialize the LCD
  */
 void LCD_Init(){
+	hard_reset();
+	soft_reset();
+	
 	send_command(0xb0);
 	send_data(0x00);
 	// Interface Pixel Format, 16 bits / pixel
@@ -91,6 +94,20 @@ void LCD_Init(){
 	HAL_Delay(150);
 	// Display ON
 	send_command(0x29);
+}
+
+/**
+ * @brief perform a hardware-level reset on the LCD
+ */
+void hard_reset(){
+	//TODO
+}
+
+/**
+ *@brief perform a software reset on the LCD
+ */
+void soft_reset(){
+	//TODO
 }
 
 /**
