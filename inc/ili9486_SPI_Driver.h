@@ -26,6 +26,8 @@
 #define TIMEOUT				1000
 
 void LCD_Init();
+void hard_reset();
+void soft_reset();
 void send_data(uint8_t data);
 void send_command(uint8_t command);
 void send_frame_buffer(uint8_t *frame, uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd);
