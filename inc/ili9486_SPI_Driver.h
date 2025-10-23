@@ -1,8 +1,7 @@
 /*
- * ili9486.h
+ * Definitions and function prototypes for the correspounding source file.
  *
- *  Created on: Oct 10, 2025
- *      Author: benra
+ * @Author Ben Rappleye
  */
 
 #ifndef INC_ILI9486_H_
