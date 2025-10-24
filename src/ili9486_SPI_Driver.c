@@ -100,14 +100,20 @@ void LCD_Init(){
  * @brief perform a hardware-level reset on the LCD
  */
 void hard_reset(){
-	//TODO
+	//pull RESX from high to low for at least 9us
+	HAL_GPIO_WritePin(RESET_PORT, RESET_PIN, GPIO_PIN_SET);
+	HAL_delay(5);
+	HAL_GPIO_WritePin(RESET_PORT, RESET_PIN, GPIO_PIN_RESET);
+	HAL_delay(5);
+	HAL_GPIO_WritePin(RESET_PORT, RESET_PIN, GPIO_PIN_SET);
 }
 
 /**
  *@brief perform a software reset on the LCD
  */
 void soft_reset(){
-	//TODO
+	send_command(0x01u); //soft reset command
+	HAL_delay(10); //allow time for startup
 }
 
 /**
