@@ -1,5 +1,5 @@
 # PCR Machine (Thermocycler)
-This project is currently in progress
+This project is currently in progress. Right now, I am working on the Software end of things, so check out the inc/ and src/ folders. CAD/ and Hardware/ folders are currently empty
 
 # Project Goals
 Develope a low-cost, high performance PCR machine for use in research labs
