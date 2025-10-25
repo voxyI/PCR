@@ -33,6 +33,6 @@ void send_frame_buffer(uint8_t *frame, uint16_t xStart, uint16_t yStart, uint16_
 void set_region(uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd);
 void set_pixel(uint16_t x, uint16_t y, uint16_t color);
 void format_frame_buffer(uint8_t *buffer, uint16_t length);
-void set_backlight(bool state);
+void lcd_on(bool state);
 
 #endif /* INC_ILI9486_H_ */
