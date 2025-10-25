@@ -78,22 +78,23 @@ void LCD_Init(){
 	send_data(0x20);
 	send_data(0x00);
 	// Set rotation
-	
+	send_command(0x36);
+	send_data(0x10); //enable MV bit for horizontal display
 	// Idle mode control + Power +  Frame rate ctrl
-	
-	// Display Inversion Control
+	send_command(0xB1);
+	send_data(0x00); //set lowest frame rate (28hz)
+	send_data(0x11); //configure RTNA as default
+	// Enable Z-inversion
 	send_command(0xB4);
-	send_data(0x02); // 2 dot inversion /-/ disabled | 0x12 to enable
-	// Display Function Control
-	send_command(0xB6);
-	send_data(0x02);
-	send_data(0x22);
-	send_data(0x3B);
-	// # Sleep OUT
+	send_data(0x12); // enable 2-dot inversion
+	
+	// Display Function Control (maybe fine to leave as default?)
+	
+	// Sleep OUT
 	send_command(0x11);
-	HAL_Delay(150);
+	HAL_Delay(10); //wait 10 ms to allow time for suppply voltages and clocks to stabalize
 	// Display ON
-	send_command(0x29);
+	lcd_on(TRUE);
 }
 
 /**
@@ -109,7 +110,7 @@ void hard_reset(){
 }
 
 /**
- *@brief perform a software reset on the LCD
+ * @brief perform a software reset on the LCD
  */
 void soft_reset(){
 	send_command(0x01u); //soft reset command
@@ -221,16 +222,18 @@ void format_frame_buffer(uint8_t *buffer, uint16_t length) {
 }
 
 /**
- * Toggles the LCD backlight on or off
+ * Turns the LCD on or off
  *
  * @param state
  * true = backlight on
  * false = backlight off
  */
-void set_backlight(bool state){
+void lcd_on(bool state){
 	if(state){
 		HAL_GPIO_WritePin(LED_PORT, LED_PIN, GPIO_PIN_SET);
+		send_command(0x29); //Display on command
 	} else {
 		HAL_GPIO_WritePin(LED_PORT, LED_PIN, GPIO_PIN_RESET);
+		send_command(0x28); //Display off command
 	}
 }
