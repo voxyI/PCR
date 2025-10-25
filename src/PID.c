@@ -27,7 +27,7 @@ typedef struct {
  * @param kd
  * 	The derivative constant
  */
-void PID_init(*PID_mudule pid, float kp, float ki, float kd) {
+void PID_init(PID_mudule *pid, float kp, float ki, float kd) {
 	pid->kp = kp;
 	pid->ki = ki;
 	pid->kd = kd;
@@ -54,8 +54,9 @@ void PID_init(*PID_mudule pid, float kp, float ki, float kd) {
  * @return
  * 	The value to adjust the temperature controller by
  */
-float PID_update(*PID_module pid, float target, float measurement, float time) {
+float PID_update(PID_module *pid, float target, float measurement, float time) {
 	//TODO
 }
+
 
 #endif
