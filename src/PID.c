@@ -1,13 +1,5 @@
 #include <stdint.h>
-
-typedef struct {
-	float kp;
-	float ki;
-	float kd;
-	float prevError;
-	float prevMeasure;
-	float integral;
-} PID_module;
+#include "PID.h"
 
 /**
  * @brief Initialize the PID struct with start values
@@ -54,3 +46,4 @@ void PID_init(PID_mudule *pid, float kp, float ki, float kd) {
 float PID_update(PID_module *pid, float target, float measurement, float time) {
 	//TODO
 }
+
